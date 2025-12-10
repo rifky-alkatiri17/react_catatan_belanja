@@ -8,6 +8,27 @@ import Form from './component/form.jsx'
 import GroceryList from './component/grocery_list.jsx'
 import Footer from './component/footer.jsx'
 
+const groceryItems = [
+  {
+        id: 1,
+        name: 'Kopi Bubuk',
+        quantity: 2,
+        checked: true,
+      },
+      {
+        id: 2,
+        name: 'Gula Pasir',
+        quantity: 5,
+        checked: false,
+      },
+      {
+        id: 3,
+        name: 'Air Mineral',
+        quantity: 3,
+        checked: true,
+      },
+];
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -16,7 +37,7 @@ function App() {
       <div className="app">
         <Header />
         <Form />
-        <GroceryList />
+        <GroceryList data={groceryItems} />
         <Footer />
       </div>
     </>

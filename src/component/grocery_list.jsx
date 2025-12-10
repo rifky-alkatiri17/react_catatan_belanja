@@ -1,23 +1,15 @@
-export default function GroceryList(){
+import Item from './item.jsx' 
+
+export default function GroceryList({data}){
+	console.log(data);
 	return(
 		<>
 			<div className="list">
 	          <ul>
-	            <li>
-	              <input type="checkbox"  />
-	              <span >1 Kopi</span>
-	              <button>&times;</button>
-	            </li>
-	            <li>
-	              <input type="checkbox" />
-	              <span>5 Gula Pasir</span>
-	              <button>&times;</button>
-	            </li>
-	            <li>
-	              <input type="checkbox" />
-	              <span>3 Air Mineral</span>
-	              <button>&times;</button>
-	            </li>
+	          	{data.map(el=>
+	          		(<Item key={el.id} el={el}/>)
+	          	)}	            
+	            
 	          </ul>
 	        </div>
 	        <div className="actions">

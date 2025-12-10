@@ -31,12 +31,17 @@ const groceryItems = [
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [items, setItems] = useState(groceryItems);
+  function handleAddItems(obj){
+    setItems(groceryItems.push(obj));
+    console.log(items);
+  }
 
   return (
     <>
       <div className="app">
         <Header />
-        <Form />
+        <Form data={groceryItems} handleAddItems={handleAddItems} />
         <GroceryList data={groceryItems} />
         <Footer />
       </div>

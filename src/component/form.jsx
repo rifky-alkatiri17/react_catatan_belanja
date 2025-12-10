@@ -1,24 +1,31 @@
 import {useState} from 'react';
 
-export default function Form(){
+export default function Form({handleAddItems}){
+	const quantityEl = document.querySelector("select");
+	const input = document.querySelector("input");
 	const quantityNum = [...Array(20)];
 	const [name, setName] = useState('');
 	const [quantity, setQuantity] = useState(0);
 
 	function handleSubmit(e){
 		e.preventDefault();
-		const quantityEl = document.querySelector("select");
-		const input = document.querySelector("input");
+		
 		// alert(`${quantityEl.value} dan ${input.value}`)
 		// alert(`${quantity} and ${name}`)
+		if (!input.value) {
+			alert('data kosong...');
+			return
+		};
+
 		const newItem = {
 			'name' : name, 
 			'quantity' : Number(quantity),
-			'checked' : true,
+			'checked' : false,
 			'id': Date.now()
 		};
 		console.log(newItem);
-		input.value = ''
+		setName(''); setQuantity(1);
+		handleAddItems(newItem)
 	}
 
 	return(

@@ -29,20 +29,30 @@ const groceryItems = [
       },
 ];
 
+ 
+
 function App() {
-  // const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0) 
   const [items, setItems] = useState(groceryItems);
+
   function handleAddItems(obj){
-    setItems(groceryItems.push(obj));
+    setItems(prev=>[...prev,obj]);
     console.log(items);
+  }
+
+  function handleDeleteItems(i){
+    // console.log(`data yg akan dihapus adalah index ke ${i}`);
+    let groceryItems2 = groceryItems.filter(item=> item.id !== i);
+    console.log(groceryItems2);
+    setItems(groceryItems2)
   }
 
   return (
     <>
       <div className="app">
         <Header />
-        <Form data={groceryItems} handleAddItems={handleAddItems} />
-        <GroceryList data={groceryItems} />
+        <Form handleAddItems={handleAddItems} />
+        <GroceryList data={items}  handleDeleteItems={handleDeleteItems}/>
         <Footer />
       </div>
     </>

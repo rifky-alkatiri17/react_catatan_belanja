@@ -5,14 +5,14 @@ export default function Form({handleAddItems}){
 	const input = document.querySelector("input");
 	const quantityNum = [...Array(20)];
 	const [name, setName] = useState('');
-	const [quantity, setQuantity] = useState(0);
+	const [quantity, setQuantity] = useState('1');
 
 	function handleSubmit(e){
 		e.preventDefault();
 		
 		// alert(`${quantityEl.value} dan ${input.value}`)
 		// alert(`${quantity} and ${name}`)
-		if (!input.value) {
+		if (!name) {
 			alert('data kosong...');
 			return
 		};
@@ -25,6 +25,7 @@ export default function Form({handleAddItems}){
 		};
 		console.log(newItem);
 		setName(''); setQuantity(1);
+		
 		handleAddItems(newItem)
 	}
 

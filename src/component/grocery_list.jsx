@@ -1,13 +1,13 @@
 import Item from './item.jsx' 
 
-export default function GroceryList({data}){
+export default function GroceryList({data, handleDeleteItems}){
 	console.log(data);
 	return(
 		<>
 			<div className="list">
 	          <ul>
 	          	{data.map(el=>
-	          		(<Item key={el.id} el={el}/>)
+	          		(<Item key={el.id} el={el} handleDeleteItems={handleDeleteItems} />)
 	          	)}	            
 	            
 	          </ul>

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export default function Form({handleAddItems}){
+export default function Form({onAddItems}){
 	const quantityEl = document.querySelector("select");
 	const input = document.querySelector("input");
 	const quantityNum = [...Array(20)];
@@ -26,7 +26,7 @@ export default function Form({handleAddItems}){
 		console.log(newItem);
 		setName(''); setQuantity(1);
 		
-		handleAddItems(newItem)
+		onAddItems(newItem)
 	}
 
 	return(

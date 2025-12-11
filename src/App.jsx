@@ -25,7 +25,7 @@ const groceryItems = [
         id: 3,
         name: 'Air Mineral',
         quantity: 3,
-        checked: true,
+        checked: false,
       },
 ];
 
@@ -36,23 +36,26 @@ function App() {
   const [items, setItems] = useState(groceryItems);
 
   function handleAddItems(obj){
-    setItems(prev=>[...prev,obj]);
+    setItems([...items,obj]); //immutability
     console.log(items);
   }
 
   function handleDeleteItems(i){
     // console.log(`data yg akan dihapus adalah index ke ${i}`);
-    let groceryItems2 = groceryItems.filter(item=> item.id !== i);
-    console.log(groceryItems2);
-    setItems(groceryItems2)
+    setItems(items.filter(item=>item.id!==i));
+    console.log(items)
+  }
+
+  function handleChecked(i){
+    setItems(items.map(item=>item.id===i? {...item, checked:!item.checked} : item));
   }
 
   return (
     <>
       <div className="app">
         <Header />
-        <Form handleAddItems={handleAddItems} />
-        <GroceryList data={items}  handleDeleteItems={handleDeleteItems}/>
+        <Form onAddItems={handleAddItems} />
+        <GroceryList data={items}  onDeleteItems={handleDeleteItems} onChecked={handleChecked}/>
         <Footer />
       </div>
     </>

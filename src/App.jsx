@@ -50,13 +50,17 @@ function App() {
     setItems(items.map(item=>item.id===i? {...item, checked:!item.checked} : item));
   }
 
+  function handleClearItems(){
+    setItems([])
+  }
+
   return (
     <>
       <div className="app">
         <Header />
         <Form onAddItems={handleAddItems} />
-        <GroceryList data={items}  onDeleteItems={handleDeleteItems} onChecked={handleChecked}/>
-        <Footer />
+        <GroceryList data={items}  onDeleteItems={handleDeleteItems} onChecked={handleChecked} onClearItems={handleClearItems}/>
+        <Footer rekap={items} />
       </div>
     </>
   )
